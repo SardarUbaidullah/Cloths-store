@@ -279,18 +279,16 @@ $inWishlist = in_array($product->id, $userWishlist ?? []);
     @csrf
     <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-       @auth
  <button type="submit" class="wish-btn" style="border:none; background:none;">
         <i class="fa fa-heart {{ $inWishlist ? 'text-red' : '' }}"></i>
     </button>
-@endauth
 
 </form>
 
 
 
 
-</form>
+
 
 
 
@@ -408,11 +406,9 @@ $inWishlist = in_array($n->id, $userWishlist ?? []);
 <form action="{{ route('frontend.wishlist.toggle') }}" method="POST" style="display:inline;">
     @csrf
     <input type="hidden" name="product_id" value="{{ $n->id }}">
-   @auth
  <button type="submit" class="wish-btn" style="border:none; background:none;">
         <i class="fa fa-heart {{ $inWishlist ? 'text-red' : '' }}"></i>
     </button>
-@endauth
 </form>
 
 

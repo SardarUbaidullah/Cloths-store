@@ -69,10 +69,7 @@ Route::get('/shopping-cart', [ShopingCartController::class, 'viewCart'])->name('
 Route::get('/cart/remove/{id}', [ShopingCartController::class, 'remove'])->name('frontend.cart.remove');
 
 
- Route::get('/wishlist', [WishlistController::class,'index'])->name('user.wishlist');
-Route::post('/wishlist/toggle', [WishlistController::class, 'toggle'])->name('frontend.wishlist.toggle');
-    Route::post('/wishlist/add', [WishlistController::class, 'add'])->name('frontend.wishlist.add');
-Route::post('/wishlist/remove', [WishlistController::class, 'remove'])->name('frontend.wishlist.remove');
+
 
 
 /*
@@ -105,6 +102,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
      Route::get('/my-orders', [OrdersController::class, 'userOrders'])->name('user.orders');
     Route::get('/my-orders/{order_number}', [OrdersController::class, 'userOrderShow'])->name('user.orders.show');
+
+    Route::get('/wishlist', [WishlistController::class,'index'])->name('user.wishlist');
+Route::post('/wishlist/toggle', [WishlistController::class, 'toggle'])->name('frontend.wishlist.toggle');
+    Route::post('/wishlist/add', [WishlistController::class, 'add'])->name('frontend.wishlist.add');
+Route::post('/wishlist/remove', [WishlistController::class, 'remove'])->name('frontend.wishlist.remove');
+
+Route::delete('/user/orders/{id}', [OrdersController::class, 'userDestroy'])->name('user.orders.delete');
+
 });
 
 /*
@@ -130,7 +135,9 @@ Route::get('/customers', [CustomersController::class, 'index'])->name('admin.cus
 
 // Show orders of a single customer
 Route::get('customers/{id}', [CustomersController::class, 'show'])->name('customers.show');
-
+Route::get('/orders/index', [AdminController::class, 'order'])->name('admin.orders.index');
+    Route::get('/orders/pending', [AdminController::class, 'pending'])->name('orders.pending');
+    Route::get('/orders/completed', [AdminController::class, 'completed'])->name('orders.completed');
 
     /*
     |--------------------------------------------------------------------------
@@ -177,9 +184,7 @@ Route::get('customers/{id}', [CustomersController::class, 'show'])->name('custom
     | ORDERS
     |--------------------------------------------------------------------------
     */
-    Route::get('/orders/index', [AdminController::class, 'order'])->name('orders.index');
-    Route::get('/orders/pending', [AdminController::class, 'pending'])->name('orders.pending');
-    Route::get('/orders/completed', [AdminController::class, 'completed'])->name('orders.completed');
+
 
      Route::get('orders', [OrdersController::class, 'adminIndex'])->name('orders.index');
     Route::get('orders/{id}', [OrdersController::class, 'adminShow'])->name('orders.show');

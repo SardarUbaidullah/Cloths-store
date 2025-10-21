@@ -4,7 +4,7 @@
 <style>
     .user-orders-section {
         max-width: 1000px;
-        margin: 150px auto;
+        margin:50px auto;
         background: #fff;
         padding: 30px;
         border-radius: 15px;
@@ -51,11 +51,11 @@
     /* Empty state */
     .empty-orders {
         text-align: center;
-        padding: 60px 20px;
+
     }
 
     .empty-orders img {
-        max-width: 180px;
+        width: 290px;
         margin-bottom: 20px;
         filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
     }
@@ -85,7 +85,6 @@
 </style>
 
 <div class="user-orders-section">
-    <h3 class="order-heading">My Orders</h3>
 
     @if($orders->count() > 0)
     <table class="table table-modern">
@@ -112,13 +111,23 @@
                         View
                     </a>
                 </td>
+              <td>
+    <form action="{{ route('user.orders.delete', $order->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to cancel this order?');">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger btn-details">
+            Cancel
+        </button>
+    </form>
+</td>
+
             </tr>
             @endforeach
         </tbody>
     </table>
     @else
     <div class="empty-orders">
-        <img src="{{ asset('frontend/images/empty-cart.svg') }}" alt="No Orders">
+        <img src="{{ asset('frontend/images/no-order.png') }}" alt="No Orders">
         <h3>No Orders Yet!</h3>
         <p>You haven’t made any purchases yet. Start shopping to see your orders here.</p>
         <a href="{{ url('/') }}" class="btn">Continue Shopping</a>

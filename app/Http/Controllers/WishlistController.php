@@ -60,4 +60,13 @@ class WishlistController extends Controller
 
         return back()->with('success','Removed From wishlist!');
     }
+
+    public function guestWarning()
+{
+    return response()->json([
+        'status' => 'error',
+        'message' => 'Please login to add items to your wishlist '
+    ]);
+}
+
 }

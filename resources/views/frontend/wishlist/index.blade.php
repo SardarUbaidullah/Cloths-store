@@ -386,6 +386,14 @@
                             <input type="hidden" name="quantity" value="1">
                             <button type="submit">Add to Cart</button>
                         </form>
+                          <form action="{{ route('frontend.wishlist.toggle') }}" method="POST"
+                                    style="flex:1;  display:inline-block; text-align:center; margin: auto; position: absolute; top: 0px; right: 0%;">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $item->product->id }}">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" style="background: black; color: white;">Remove</button>
+                                </form>
+
                         <a href="{{ route('frontend.product-detail', $item->product->id) }}" class="view-details" style="flex:1; margin-left:5px; display:inline-block; text-align:center; text-decoration:none; padding:8px 15px; border:1px solid #000;">View Details</a>
                     </div>
                 </div>

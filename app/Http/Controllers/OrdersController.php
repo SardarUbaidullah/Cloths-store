@@ -213,6 +213,17 @@ class OrdersController extends Controller
         return redirect()->route('admin.orders.index')->with('success', 'Order deleted.');
     }
 
+public function userDestroy($id)
+{
+    $order = Orders::findOrFail($id);
+    if ($order->user_id !== auth()->id()) {
+        abort(403, 'Unauthorized action.');
+    }
+
+    $order->delete();
+
+    return redirect()->back();
+}
 
     public function userOrders()
 {
