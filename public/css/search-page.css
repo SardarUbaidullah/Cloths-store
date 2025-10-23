@@ -1,0 +1,294 @@
+/* search-page.css - premium, modern look */
+
+.filter-card { border: 0; border-radius: 12px; box-shadow: 0 6px 18px rgba(18,24,38,0.06); }
+.small-card { border: 0; border-radius: 12px; box-shadow: 0 6px 18px rgba(18,24,38,0.04); }
+
+.product-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease;
+  background: #fff;
+  border: 1px solid rgba(16,24,40,0.04);
+}
+.product-card .product-thumb { height: 210px; display:flex; align-items:center; justify-content:center; background: #fafafa; }
+.product-card .product-thumb img { max-height:100%; width:auto; object-fit:contain; }
+
+.product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(11,20,50,0.08); }
+
+.product-title { font-size: .95rem; color: #111827; }
+.price { color: #0b6bff; font-weight:700; }
+
+.no-results .empty-illustration { opacity: .9; }
+.suggestion-card { border-radius: 12px; border: none; box-shadow: 0 8px 30px rgba(2,6,23,0.04); transition: transform .12s ease; }
+.suggestion-card:hover { transform: translateY(-6px); box-shadow: 0 18px 60px rgba(2,6,23,0.06); }
+
+@media (max-width: 768px) {
+  .product-card .product-thumb { height: 160px; }
+}
+
+
+
+/* --- SEARCH PAGE | Premium Clean White + Black + Gold Accent --- */
+
+:root {
+  --accent: #D4A373;    /* your warm gold */
+  --dark: #222;
+  --muted: #6b6b6b;
+}
+
+/* Filters / Cards */
+.filter-card, .small-card {
+  border: 0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(25,25,25,0.06);
+  padding: 18px 20px;
+}
+
+/* Product Card */
+.product-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 6px 18px rgba(15,15,15,0.04);
+  cursor: pointer;
+}
+
+.product-card .product-thumb {
+  height: 240px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+
+.product-card .product-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .25s ease;
+}
+
+.product-card:hover .product-thumb img {
+  transform: scale(1.04);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.09);
+}
+
+/* Title & Price */
+.product-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dark);
+  margin: 8px 0 3px 0;
+  text-transform: capitalize;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--dark);
+}
+
+.price span {
+  color: var(--accent);
+}
+
+/* "No Results" Section */
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.no-results .empty-illustration {
+  opacity: .85;
+  width: 240px;
+  margin-bottom: 16px;
+}
+
+.no-results h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.no-results p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 26px;
+}
+
+/* Suggestions */
+.suggestion-card {
+  border-radius: 12px;
+  border: none;
+  background: #fff;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.05);
+  transition: transform .15s ease, box-shadow .15s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.suggestion-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 38px rgba(0,0,0,0.08);
+}
+
+.suggestion-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.suggestion-card .title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark);
+  padding: 10px 6px 4px 6px;
+  text-transform: capitalize;
+}
+
+.suggestion-card .price {
+  padding: 0 6px 10px 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-card .product-thumb {
+    height: 180px;
+  }
+}
+
+
+/* --- Suggestion Cards Premium --- */
+.suggestion-card {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  transition: transform .18s ease, box-shadow .18s ease;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(18,24,38,0.04);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.suggestion-card .suggest-thumb {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  position: relative;
+  overflow: hidden;
+}
+
+.suggestion-card .suggest-thumb img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  transition: transform .25s ease;
+}
+
+.suggestion-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 60px rgba(2,6,23,0.06);
+}
+
+.suggestion-card:hover .suggest-thumb img {
+  transform: scale(1.05);
+}
+
+/* Overlay with eye icon */
+.suggestion-card .overlay-eye {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity .25s ease;
+  border-radius: 12px;
+}
+
+.suggestion-card:hover .overlay-eye {
+  opacity: 1;
+}
+
+.overlay-eye i {
+  color: #fff;
+  font-size: 24px;
+}
+/* --- Suggestion Cards Premium with Floating Eye --- */
+.suggestion-card {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  transition: transform .18s ease, box-shadow .18s ease;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(18,24,38,0.04);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.suggestion-card .suggest-thumb {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  position: relative;
+  overflow: hidden;
+}
+
+.suggestion-card .suggest-thumb img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  transition: transform .25s ease;
+}
+
+.suggestion-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 60px rgba(2,6,23,0.06);
+}
+
+.suggestion-card:hover .suggest-thumb img {
+  transform: scale(1.05);
+}
+
+/* Floating Eye Overlay */
+.suggestion-card .overlay-eye {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+}
+
+.suggestion-card:hover .overlay-eye {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+.overlay-eye i {
+  color: #fff;
+  font-size: 26px;
+  transition: all 0.3s ease;
+  transform: scale(0.8);
+}
+
+.suggestion-card:hover .overlay-eye i {
+  transform: scale(1.1) translateY(-3px);
+}

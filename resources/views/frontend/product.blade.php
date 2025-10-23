@@ -276,11 +276,7 @@ body { overflow-x: hidden !important; }
                         </div>
 
                         {{-- small action icons: wishlist icon (optional) --}}
-                        <div style="display:flex; flex-direction:column; gap:8px; align-items:flex-end;">
-                            <button class="wish-btn" title="Wishlist" style="background:transparent; border:0; cursor:pointer;">
-                                <i class="fa fa-heart" style="color:#6b6b6b;"></i>
-                            </button>
-                        </div>
+
                     </div>
                 </div>
             </div>

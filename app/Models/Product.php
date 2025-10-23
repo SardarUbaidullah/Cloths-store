@@ -65,6 +65,18 @@ public function orderItems()
 {
     return $this->hasMany(OrderItem::class, 'product_id', 'id');
 }
+protected static function boot()
+{
+    parent::boot();
+
+    static::creating(function ($product) {
+        $product->slug = Str::slug($product->name);
+    });
+
+    static::updating(function ($product) {
+        $product->slug = Str::slug($product->name);
+    });
+}
 
 }
 

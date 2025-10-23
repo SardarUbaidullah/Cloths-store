@@ -187,7 +187,13 @@
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
  <!-- jQuery -->
-<script src="{{ asset('frontend/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- jQuery (keep ONLY this one and remove other jQuery copies) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
 
 <!-- Bootstrap -->
 <script src="{{ asset('frontend/vendor/bootstrap/js/popper.js') }}"></script>
@@ -261,7 +267,7 @@
 <script src="{{ asset('frontend/js/map-custom.js') }}"></script> -->
 
 <!-- Isotope Filtering & Sorting -->
-<script src="{{asset('frontend/vendor/isotope/isotope.pkgd.min.js')}}"></script>
+<script src="{{asset('frontend/vendor/isotope/isotope.pkgd.min.js')}}"></script>\
 <script>
     document.addEventListener('DOMContentLoaded', () => {
 	const grid = document.querySelector('.row.isotope-grid');
@@ -346,18 +352,6 @@
 
 </script>
 
-<!-- Modal Search -->
-<script>
-	document.querySelector('.js-show-modal-search')?.addEventListener('click', () => {
-		document.querySelector('.modal-search-header')?.style.setProperty('display', 'block');
-	});
-
-	document.querySelectorAll('.js-hide-modal-search')?.forEach(btn => {
-		btn.addEventListener('click', () => {
-			document.querySelector('.modal-search-header')?.style.setProperty('display', 'none');
-		});
-	});
-</script>
 
 <!-- Main JS -->
 <script src="{{ asset('frontend/js/main.js') }}"></script>

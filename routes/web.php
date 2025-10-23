@@ -28,7 +28,8 @@ use App\Http\Controllers\UserDashboardController;
 |--------------------------------------------------------------------------
 */
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/search', [FrontendProductController::class, 'search']);
+Route::get('/search', [FrontendProductController::class, 'searchPage'])->name('product.search');
+
 Route::get('/about', [MainController::class, 'about']);
 Route::get('/contact', [MainController::class, 'contact']);
 Route::get('/product', [MainController::class, 'product'])->name('frontend.product');
