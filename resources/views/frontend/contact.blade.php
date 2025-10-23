@@ -1,15 +1,15 @@
 @extends('frontend.layouts.main')
 @section('main-container')
 	<!-- Title page -->
-	<section class="bg-img1 about-page txt-center p-lr-15 p-tb-162" style="background: url({url('frontend/images/contact')}); background-size: cover;">
-		<h2 class="ltext-105 cl0 txt-center" style="color: black;">
+	<section class="bg-img1 about-page txt-center p-lr-15 p-tb-92" style="background: url({{url('frontend/images/about.png')}}); background-size: cover;margin-top:0px; ">
+		<h2 class="ltext-105 cl0 txt-center">
 			Contact Us
 		</h2>
 	</section>
 
 
 	<!-- Content page -->
-	<section class="bg0 p-t-104 p-b-116">
+	<section class="bg0 p-t-10 p-b-116">
 		<div class="container">
 			<div class="flex-w flex-tr">
 				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">

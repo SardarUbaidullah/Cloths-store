@@ -242,8 +242,11 @@ body { overflow-x: hidden !important; }
     </form>
 </div>
 
+<div class="search-container text-center mb-4">
+    <input type="text" id="liveSearch" placeholder="Search products..." class="form-control w-50 mx-auto">
+</div>
 
-    <div class="products-grid">
+    <div class="products-grid" id="productContainer">
         @foreach($products as $product)
             @php $fields = is_string($product->custom_fields) ? json_decode($product->custom_fields, true) : (array)$product->custom_fields; @endphp
 

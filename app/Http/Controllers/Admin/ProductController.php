@@ -207,4 +207,6 @@ public function filter(Request $request)
     return view('frontend.products', compact('products'));
 }
 
+
+
 }

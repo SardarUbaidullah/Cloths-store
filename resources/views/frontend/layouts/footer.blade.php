@@ -364,6 +364,42 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<script>
+document.getElementById('openSearch').addEventListener('click', () => {
+  document.getElementById('searchModal').style.display = 'flex';
+  document.getElementById('searchInput').focus();
+});
 
+document.getElementById('closeSearch').addEventListener('click', () => {
+  document.getElementById('searchModal').style.display = 'none';
+  document.getElementById('searchResults').style.display = 'none';
+});
+
+document.getElementById('searchInput').addEventListener('input', async function() {
+  const query = this.value.trim();
+  const resultsBox = document.getElementById('searchResults');
+
+  if (query.length < 2) {
+    resultsBox.style.display = 'none';
+    return;
+  }
+
+  // Fetch from your Laravel route
+  const response = await fetch(`/search?query=${encodeURIComponent(query)}`);
+  const products = await response.json();
+
+  if (products.length) {
+    resultsBox.innerHTML = products.map(p => `
+      <div class="search-result-item" onclick="window.location='/product/${p.id}'">
+        ${p.name}
+      </div>
+    `).join('');
+    resultsBox.style.display = 'block';
+  } else {
+    resultsBox.innerHTML = `<div class="search-result-item">No results found</div>`;
+    resultsBox.style.display = 'block';
+  }
+});
+</script>
 </body>
 </html>

@@ -1,11 +1,11 @@
 @extends('frontend.layouts.main')
 @section('main-container')
 	<!-- Title page -->
-	<section class="bg-img1 about-page txt-center p-lr-15 p-tb-92" style="background: url({{url('frontend/images/about.png')}}); background-size: cover;">
+	<section class="bg-img1 about-page txt-center p-lr-15 p-tb-92" style="background: url({{url('frontend/images/about.png')}}); background-size: cover;margin-top:0px; ">
 		<h2 class="ltext-105 cl0 txt-center">
 			About
 		</h2>
-	</section>	
+	</section>
 
 
 	<!-- Content page -->
@@ -35,7 +35,7 @@
 			</span>
 		</div>
 
-		
+
 	</div>
 </div>
 
@@ -47,7 +47,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="row">
 			<div class="order-md-2 col-md-7 col-lg-8 p-b-30">
 	<div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
@@ -81,10 +81,10 @@
 				</div>
 			</div>
 		</div>
-	</section>	
+	</section>
 
 @endsection
-		
 
-	
-	
+
+
+

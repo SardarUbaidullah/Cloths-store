@@ -119,15 +119,78 @@
             </li>
           </ul>
         </div>
+
+
         @else
         <a href="{{ route('login') }}" class="premium-btn-login">Login</a>
         <a href="{{ route('register') }}" class="premium-btn-register">Register</a>
         @endauth
 
+
         <!-- Search -->
-        <a class="premium-icon" onclick="document.querySelector('.js-show-modal-search').click();">
-          <i class="zmdi zmdi-search"></i>
-        </a>
+        <!-- Search Icon -->
+<!-- Search Icon -->
+<a class="premium-icon" id="openSearch">
+  <i class="zmdi zmdi-search"></i>
+</a>
+
+<!-- Search Modal -->
+<div id="searchModal" class="search-modal">
+  <div class="search-box">
+    <form id="searchForm" action="/search" method="GET" class="search-form">
+      <input type="text" id="searchInput" name="query" placeholder="Search for products..." autocomplete="off">
+      <button type="submit" class="search-btn"><i class="zmdi zmdi-search"></i></button>
+      <button type="button" id="closeSearch" class="close-btn"><i class="zmdi zmdi-close"></i></button>
+    </form>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
+
+<script>
+const openBtn = document.getElementById('openSearch');
+const closeBtn = document.getElementById('closeSearch');
+const modal = document.getElementById('searchModal');
+const input = document.getElementById('searchInput');
+const resultsBox = document.getElementById('searchResults');
+const form = document.getElementById('searchForm');
+
+// Open search
+openBtn.addEventListener('click', () => {
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  input.focus();
+});
+
+// Close search
+closeBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+  resultsBox.style.display = 'none';
+});
+
+// Live search
+input.addEventListener('input', async function() {
+  const query = this.value.trim();
+  if (query.length < 2) {
+    resultsBox.style.display = 'none';
+    return;
+  }
+
+  const response = await fetch(`/search?query=${encodeURIComponent(query)}`);
+  const products = await response.json();
+
+  if (products.length) {
+    resultsBox.innerHTML = products.map(p => `
+      <div class="search-result-item" onclick="window.location='/product/${p.id}'">${p.name}</div>
+    `).join('');
+    resultsBox.style.display = 'block';
+  } else {
+    resultsBox.innerHTML = `<div class="search-result-item">No results found</div>`;
+    resultsBox.style.display = 'block';
+  }
+});
+</script>
+
 
         <!-- Cart -->
        @php
@@ -157,6 +220,109 @@ $wishlistCount = auth()->check() ? auth()->user()->wishlist()->count() : 0;
 </header>
 
 <style>
+   /* --- SEARCH OVERLAY --- */
+.search-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.97);
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 999999;
+  padding-top: 120px;
+  animation: fadeIn .3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- SEARCH BOX --- */
+.search-box {
+  width: 90%;
+  max-width: 720px;
+  text-align: center;
+}
+
+.search-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  padding: 10px 20px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+.search-form input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #222;
+  background: transparent;
+  padding: 8px;
+}
+
+.search-btn {
+  background: #D4A373;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  padding: 8px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.search-btn:hover {
+  transform: scale(1.05);
+  background: #c59264;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #111;
+}
+
+/* --- RESULTS --- */
+.search-results {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 35px rgba(0,0,0,0.08);
+  margin-top: 20px;
+  text-align: left;
+  display: none;
+  overflow: hidden;
+}
+
+.search-result-item {
+  padding: 14px 20px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.search-result-item:hover {
+  background: #f9f9f9;
+}
+
+@media (max-width: 576px) {
+  .search-box { width: 95%; }
+  .search-form { padding: 8px 14px; }
+  .search-btn { padding: 6px 12px; font-size: 16px; }
+}
+
 /* ===== PREMIUM NAVBAR CSS ===== */
 .premium-header { backdrop-filter: blur(12px); background: rgba(0,0,0,0.75); border-bottom: 1px solid rgba(255,255,255,0.05); }
 .premium-navbar { padding: 10px 0; }
@@ -233,5 +399,8 @@ $wishlistCount = auth()->check() ? auth()->user()->wishlist()->count() : 0;
     background: black;
     color: #ffffff;
 }
+
+
+
 </style>
 
