@@ -241,18 +241,13 @@
 
       @else
         <!-- NO RESULTS - Premium UI -->
-        <div class="no-results text-center py-5">
-          <div class="empty-illustration mb-4">
-            <svg width="140" height="100" viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="5" y="10" width="130" height="80" rx="8" fill="#F5F5F5"/>
-              <path d="M30 60 H110" stroke="#E2E8F0" stroke-width="3" stroke-linecap="round" />
-              <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="#CBD5E1" font-size="12">No results</text>
-            </svg>
-          </div>
+            <div class="empty-cart text-center" style="padding:60px 20px;">
+                            <img src="{{ asset('frontend/images/no-product-2.png') }}" alt="Empty Cart" style="max-width:220px; display:block; margin:auto; filter:drop-shadow(0 5px 15px rgba(0,0,0,0.2));">
+                          <h3 style="margin-top:20px; font-weight:600;">No Results Found</h3>
+<p style="color:#555;">Can’t find what you're looking for? Don’t worry — we’ve handpicked some items you might love below</p>
+<a href="{{url('/shop')}}" class="btn btn-dark mt-2">Go To Shop</a>
 
-          <h4 class="mb-2" style="color:#222;">We couldn't find anything for "<strong>{{ $q }}</strong>"</h4>
-          <p class="text-muted mb-4">Try different keywords or check these picks.</p>
-
+                        </div>
          @if($suggestions->count())
   <div class="row justify-content-center">
     @foreach($suggestions as $item)

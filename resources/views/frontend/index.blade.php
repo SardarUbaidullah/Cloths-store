@@ -141,12 +141,25 @@
         0% { opacity: 0; transform: translateY(20px); }
         100% { opacity: 1; transform: translateY(0); }
     }
+
+
+.home-hero {
+  position: relative;
+  z-index: 1 !important;
+}
+
+.home-hero .overlay {
+  position: absolute;
+  z-index: 2 !important;
+}
+
+
 </style>
 
 <div class="container ">
 
   <!-- HERO -->
-  <div class="home-hero" style="background-image:url('{{ asset('frontend/images/bnr.jpg') }}'); background-size:cover; background-position:center; margin-top:50px;">
+  <div class="home-hero" style="background-image:url('{{ asset('frontend/images/bnr.jpg') }}'); background-size:cover; background-position:center; margin-top:50px; ">
     <div class="overlay"></div>
     <div class="hero-inner">
       <div class="row align-items-center">

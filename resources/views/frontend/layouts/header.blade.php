@@ -133,6 +133,15 @@
   justify-content: center;
   align-items: center;
 }
+
+
+.drpd {
+  position: fixed !important;
+  top: 60px !important;
+  right: 20px !important;
+  z-index: 9999999999 !important;
+}
+
 </style>
 
 </head>
@@ -253,14 +262,14 @@ $wishlistCount = auth()->check() ? auth()->user()->wishlist()->count() : 0;
         $initial = strtoupper(substr(auth()->user()->name, 0, 1));
     @endphp
 
-    <div class="dropdown">
+    <div class="dropdown "style="position: relative; z-index: 99999;">
         <button class="premium-user-btn d-flex justify-content-center align-items-center"
                 data-bs-toggle="dropdown"
                 style="width:35px; height:35px; border-radius:50%; background:#D4A373; color:white; font-weight:600; font-size:18px; border:none;">
             {{ $initial }}
         </button>
 
-        <ul class="dropdown-menu dropdown-menu-end premium-dropdown">
+        <ul class="dropdown-menu dropdown-menu-end premium-dropdown drpd" style="position: absolute; z-index: 9999999 !important;">
             <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
@@ -317,7 +326,7 @@ $wishlistCount = auth()->check() ? auth()->user()->wishlist()->count() : 0;
   border-radius: 50%; position: absolute; top: -6px; right: -6px;
 }
 
-.premium-dropdown { background: #1f1f1f; border: 1px solid #333; }
+.premium-dropdown { background: #1f1f1f; border: 1px solid #333; z-index: 999; }
 .premium-dropdown .dropdown-item { color: #fff; }
 .premium-dropdown .dropdown-item:hover { background: #D4A373; color: #000; }
 
